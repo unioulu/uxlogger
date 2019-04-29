@@ -7,6 +7,11 @@ EventLog::EventLog(QString text) {
     time_ = Time::deltaTime();
 }
 
+EventLog::EventLog(QString text, int time) {
+    text_ = text;
+    time_ = time;
+}
+
 QString EventLog::text() const {
     return text_;
 }

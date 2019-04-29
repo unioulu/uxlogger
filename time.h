@@ -7,7 +7,7 @@ class Time {
 public:
     static int deltaTime();
     static QDateTime startTime();
-    static void resetStartTime();
+    static void resetStartTime(int offset = 0);
 
     static QString timeStringFromMs(int inputMs);
 

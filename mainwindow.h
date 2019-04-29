@@ -7,6 +7,8 @@ class DefaultButtonArea;
 class ManualInputField;
 class LogTable;
 class EventLogger;
+class QActionGroup;
+class QFileDialog;
 
 namespace Ui {
 class MainWindow;
@@ -27,6 +29,7 @@ public:
 
 protected:
     void resizeEvent(QResizeEvent* event);
+    void closeEvent(QCloseEvent *event);
 
 private:
     Ui::MainWindow *ui;
@@ -35,8 +38,25 @@ private:
     LogTable* logTable_;
     EventLogger* logger_;
 
+    bool unsavedChangesCheck();
+
     int logAreaWidth();
 
+    void createActions();
+    void createMenus();
+
+    QMenu* fileMenu;
+    QMenu* exportMenu;
+    QAction* newAction;
+    QAction* openAction;
+    QAction* saveAction;
+    QActionGroup* exportGroup;
+    QAction* exportLogAction;
+    QAction* exportSrtAction;
+
+    QFileDialog* openDialog;
+    QFileDialog* saveDialog;
+    QFileDialog* exportDialog;
 signals:
     void loggerUpdated();
 
@@ -45,6 +65,11 @@ signals:
     void onActionButtonPress(const ActionButtonData* data);
     void onManualLogEnter();
 
+private slots:
+    void onNewActionPress();
+    void onOpenActionPress();
+    void onSaveActionPress();
+    void onExportSrtActionPress();
 };
 
 #endif // MAINWINDOW_H

@@ -21,8 +21,8 @@ QDateTime Time::startTime() {
     return instance().startTime_;
 }
 
-void Time::resetStartTime() {
-    instance().startTime_ = QDateTime::currentDateTime();
+void Time::resetStartTime(int offset) {
+    instance().startTime_ = QDateTime::currentDateTime().addSecs(offset);
 }
 
 

@@ -14,6 +14,7 @@ public:
 
     QString fileEntry() const;
 
+    EventLog(QString text, int time);
 private:
     QString text_;
     int time_;
